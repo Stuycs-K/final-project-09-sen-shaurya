@@ -12,7 +12,7 @@ class Lexer:
         self.tokens = []
 
     def tokenize(self):
-        self._traver_folder(self.root_folder)
+        self._traverse_folder(self.root_folder)
         return self.tokens
 
     def _traverse_folder(self, folder, depth=0):
