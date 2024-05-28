@@ -38,5 +38,3 @@ Folders is a language where the program is encoded into a directory structure.
 | float  | 1 folder     | Second sub-folder holds first expression to add, third holds second expression      |
 | string | 2 folders    | Second sub-folder holds first expression to subtract, third holds second expression |
 | char   | 3 folders    | Second sub-folder holds first expression to multiply, third holds second expression |
-## Overview
-## Instructions
