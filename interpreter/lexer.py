@@ -11,6 +11,10 @@ class Lexer:
         self.root_folder = root_folder
         self.tokens = []
 
+    def tokenize(self):
+        self._traver_folder(self.root_folder)
+        return self.tokens
+
     def _traverse_folder(self, folder, depth=0):
         subfolders = [ f.path for f in os.scandir(folder) if f.is_dir() ]
         
