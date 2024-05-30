@@ -12,20 +12,28 @@ class Lexer:
         self.tokens = []
 
     def tokenize(self):
-        self._traverse_folder(self.root_folder)
+        self._tokenize_command(self.root_folder)
         return self.tokens
 
-    def _traverse_folder(self, folder, depth=0):
+    # def _traverse_folder(self, folder, depth=0):
+    #     # traverse through all the commands
+    #     subfolders = [ f.path for f in os.scandir(folder) if f.is_dir() ]
+        
+    #     if subfolders:
+    #         first_subfolder = subfolders[0]
+    #         command_count = len([f.path for f in os.scandir(first_subfolder) if f.is_dir()])
+    #         self._add_command_token(command_count)
+
+    def _tokenize_command(self, folder):
+        # traverse through all the commands
         subfolders = [ f.path for f in os.scandir(folder) if f.is_dir() ]
         
-        if depth == 0:
-            self._add_command_token(len(subfolders))
-        else:
-            # subfolder
-            self._add_expression_token(len(subfolders))
+        if subfolders:
+            first_subfolder = subfolders[0]
+            command_count = len([f.path for f in os.scandir(first_subfolder) if f.is_dir()])
+            self._add_command_token(command_count)
 
-        for subfolder in subfolders:
-            self._traverse_folder(subfolder, depth+1)
+
 
     def _add_command_token(self, subfolder_count):
         if subfolder_count == 0:
