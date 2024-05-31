@@ -1,8 +1,12 @@
 
+import re
 import os
 
 
 class Token:
+
+    COMMAND_TOKENS = ["IF", "WHILE", "DECLARE", "LET", "PRINT", "INPUT"]
+    EXPRESSION_TOKENS = ["VARIABLE", "ADD", "SUBTRACT", "MULTIPLY", "DIVIDE", "LITERAL", "EQ", "GT", "LT"]
 
     (IF, WHILE, DECLARE, LET, PRINT, INPUT) = [
         i for i in range(6)
@@ -11,12 +15,15 @@ class Token:
         i for i in range(9)
     ]
 
+
+    TYPES = ["INT", "FLOAT", "STRING", "CHAR"]
+
     def __init__(self, token, value):
         self.token = token
         self.value = value
 
     def __repr__(self):
-        return f"{self.token} : {self.value}"
+        return f"<{self.token} : {self.value}>"
 
 class Lexer:
     """
@@ -33,19 +40,20 @@ class Lexer:
         return self.tokens
 
     def lex_commands(self, path):
-        command_dirs = [f for f in os.scandir(path) if f.is_dir()] # get_dirs
+        command_dirs = self._get_sub_dirs(path)
         
         for command in command_dirs:
-            sub_dirs = [f for f in os.scandir(command.path) if f.is_dir()]
-            command_len = len([f for f in os.scandir(sub_dirs[0]) if f.is_dir()])
+            sub_dirs = self._get_sub_dirs(command.path)
+            command_len = len(self._get_sub_dirs(sub_dirs[0]))
             self._add_command_token(command_len, sub_dirs)
             
-
-    def tokenize_print(self, sub_dirs):
-
-        # 4 means print
-        return Token(Token.PRINT, "print lol")
-        # return Token(4, self.lex_expression(expression_dir.path))
+    def _get_sub_dirs(self, path):
+        
+        return sorted(
+            [f for f in os.scandir(path) if f.is_dir()],
+            key=lambda x: x.name
+        )
+        
 
     def _add_command_token(self, subfolder_count, sub_dirs):
         if subfolder_count == Token.IF:
@@ -57,7 +65,7 @@ class Lexer:
         elif subfolder_count == Token.LET:
             self.tokens.append ("LET")
         elif subfolder_count == Token.PRINT:
-            self.tokens.append(Token.PRINT, self.tokenize_print(sub_dirs))
+            self.tokens.append(Token(Token.COMMAND_TOKENS[Token.PRINT], self.tokenize_expression(sub_dirs[1])))
         elif subfolder_count == Token.INPUT:
             self.tokens.append("INPUT")
 
