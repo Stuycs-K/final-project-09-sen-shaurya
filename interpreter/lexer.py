@@ -48,36 +48,36 @@ class Lexer:
         # return Token(4, self.lex_expression(expression_dir.path))
 
     def _add_command_token(self, subfolder_count, sub_dirs):
-        if subfolder_count == 0:
+        if subfolder_count == Token.IF:
             self.tokens.append("IF")
-        elif subfolder_count == 1:
+        elif subfolder_count == Token.WHILE:
             self.tokens.append("WHILE")
-        elif subfolder_count == 2:
+        elif subfolder_count == Token.DECLARE:
             self.tokens.append("DECLARE")
-        elif subfolder_count == 3:
-            self.tokens.append("LET")
-        elif subfolder_count == 4:
-            self.tokens.append(self.tokenize_print(sub_dirs))
-        elif subfolder_count == 5:
+        elif subfolder_count == Token.LET:
+            self.tokens.append ("LET")
+        elif subfolder_count == Token.PRINT:
+            self.tokens.append(Token.PRINT, self.tokenize_print(sub_dirs))
+        elif subfolder_count == Token.INPUT:
             self.tokens.append("INPUT")
 
     def _add_expression_token(self, subfolder_count):
-        if subfolder_count == 0:
+        if subfolder_count == Token.VARIABLE:
             self.tokens.append("VARIABLE")
-        elif subfolder_count == 1:
+        elif subfolder_count == Token.ADD:
             self.tokens.append("ADD")
-        elif subfolder_count == 2:
+        elif subfolder_count == Token.SUBTRACT:
             self.tokens.append("SUBTRACT")
-        elif subfolder_count == 3:
+        elif subfolder_count == Token.MULTIPLY:
             self.tokens.append("MULTIPLY")
-        elif subfolder_count == 4:
+        elif subfolder_count == Token.DIVIDE:
             self.tokens.append("DIVIDE")
-        elif subfolder_count == 5:
+        elif subfolder_count == Token.LITERAL:
             self.tokens.append("LITERAL")
-        elif subfolder_count == 6:
+        elif subfolder_count == Token.EQ:
             self.tokens.append("EQUAL_TO")
-        elif subfolder_count == 7:
+        elif subfolder_count == Token.GT:
             self.tokens.append("GREATER_THAN")
-        elif subfolder_count == 8:
+        elif subfolder_count == Token.LT:
             self.tokens.append("LESS_THAN")
 
