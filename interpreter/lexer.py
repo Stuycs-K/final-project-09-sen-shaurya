@@ -21,6 +21,30 @@ class Lexer:
         # command num : value
         self.tokens = []
 
+    def lex(self):
+        self.lex_commands(self.root_folder)
+        return self.tokens
+
+    def lex_commands(self, path):
+        commands = []
+        # list of DirEntry
+        command_dirs = [f for f in os.scandir(path) if f.is_dir()] # get_dirs
+        
+        for command in command_dirs:
+            sub_dirs = [f for f in os.scandir(command.path) if f.is_dir()]
+            # first subfolder len determines which command it is
+            command_len = len([f for f in os.scandir(sub_dirs[0]) if f.is_dir()])
+            # self._add_command_token(command_len)
+            if (command_len == 4) :
+                #print
+                # commands.append(self.tokenize_print(sub_dirs[1]))
+                self.tokens.append(self.tokenize_print(sub_dirs[1]))
+
+    def tokenize_print(self, expression_dir):
+
+        # 4 means print
+        return Token(4, "print lol")
+        # return Token(4, self.lex_expression(expression_dir.path))
 
 
     def _add_command_token(self, subfolder_count):
