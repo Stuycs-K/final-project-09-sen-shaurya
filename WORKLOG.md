@@ -17,3 +17,11 @@ Evaluator takes in the abstract syntax tree and then evaluates the program.
 In class today I started working on implementing the basic structure of the program. I created different classes for the lexer, parser, and interpreter and set them up with basic field variables. I also figured out the flow of initialization and execution that would take place in the main file.
 
 At home, I began fleshing out the actual code for the lexer and am currently working on testing it to ensure it correctly tokenizes a hello world folders program.
+
+### 5-30
+Re-figure out the folder structure and rename folder files to help me understand. Start fleshing out lexer with tokenize command.
+
+
+### 5-31
+Add a token class
+Write lexer class with lex, lex_commands, tokenize_print, get_sub_dirs, tokenize_expressions and all the other ones. Got MVP for print program lexing.
