@@ -4,8 +4,8 @@ from interpreter import Interpreter
 
 
 if __name__ == "__main__":
-    program_path = "../programs/HelloWorld/Command"
+    program_path = "../programs/HelloWorld/"
     lexer = Lexer(program_path)
-    tokens = lexer.tokenize()
+    tokens = lexer.lex()
         
     print(tokens)
