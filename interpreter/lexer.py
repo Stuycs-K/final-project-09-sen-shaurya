@@ -1,5 +1,14 @@
 
 import os
+class Token:
+
+    def __init__(self, token, value):
+        self.token = token
+        self.value = value
+
+    def __repr__(self):
+        return f"{self.token} : {self.value}"
+    
 
 class Lexer:
     """
@@ -9,29 +18,8 @@ class Lexer:
 
     def __init__(self, root_folder):
         self.root_folder = root_folder
+        # command num : value
         self.tokens = []
-
-    def tokenize(self):
-        self._tokenize_command(self.root_folder)
-        return self.tokens
-
-    # def _traverse_folder(self, folder, depth=0):
-    #     # traverse through all the commands
-    #     subfolders = [ f.path for f in os.scandir(folder) if f.is_dir() ]
-        
-    #     if subfolders:
-    #         first_subfolder = subfolders[0]
-    #         command_count = len([f.path for f in os.scandir(first_subfolder) if f.is_dir()])
-    #         self._add_command_token(command_count)
-
-    def _tokenize_command(self, folder):
-        # traverse through all the commands
-        subfolders = [ f.path for f in os.scandir(folder) if f.is_dir() ]
-        
-        if subfolders:
-            first_subfolder = subfolders[0]
-            command_count = len([f.path for f in os.scandir(first_subfolder) if f.is_dir()])
-            self._add_command_token(command_count)
 
 
 
