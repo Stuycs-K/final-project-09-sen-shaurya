@@ -54,6 +54,26 @@ class Lexer:
             key=lambda x: x.name
         )
         
+    def tokenize_expression(self, path): 
+        """
+        tokenizes expression folder
+        """
+
+        expression_dirs = self._get_sub_dirs(path)
+        # first subfolder is token
+        expression_len = len(self._get_sub_dirs(expression_dirs[0]))
+
+        if (expression_len == Token.LITERAL) :
+            #second subfolder is data type and third is value
+            data_type = Token.TYPES[len(self._get_sub_dirs(expression_dirs[1]))]
+            if (data_type == "STRING"):
+                value_folders = self._get_sub_dirs(expression_dirs[2].path)
+                value = value_folders[0].name
+            else:
+                # tokenize
+                value = "BOOM"
+                pass
+        return Token(Token.EXPRESSION_TOKENS[Token.LITERAL], [data_type, value])
 
     def _add_command_token(self, subfolder_count, sub_dirs):
         if subfolder_count == Token.IF:
