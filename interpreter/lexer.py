@@ -38,7 +38,7 @@ class Lexer:
         for command in command_dirs:
             sub_dirs = [f for f in os.scandir(command.path) if f.is_dir()]
             command_len = len([f for f in os.scandir(sub_dirs[0]) if f.is_dir()])
-            self.tokens.append(self._add_command_token(command_len, sub_dirs))
+            self._add_command_token(command_len, sub_dirs)
             
 
     def tokenize_print(self, sub_dirs):
