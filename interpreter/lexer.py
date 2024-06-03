@@ -39,7 +39,7 @@ class Lexer:
         self.lex_commands(self.root_folder)
         return self.tokens
 
-    def lex_commands(self, path):
+    def _lex_commands(self, path):
         command_dirs = self._get_sub_dirs(path)
         
         for command in command_dirs:
@@ -54,7 +54,7 @@ class Lexer:
             key=lambda x: x.name
         )
         
-    def tokenize_expression(self, path): 
+    def _tokenize_expression(self, path): 
         """
         tokenizes expression folder
         """
@@ -85,7 +85,7 @@ class Lexer:
         elif subfolder_count == Token.LET:
             self.tokens.append ("LET")
         elif subfolder_count == Token.PRINT:
-            self.tokens.append(Token(Token.COMMAND_TOKENS[Token.PRINT], self.tokenize_expression(sub_dirs[1])))
+            self.tokens.append(Token(Token.COMMAND_TOKENS[Token.PRINT], self._tokenize_expression(sub_dirs[1])))
         elif subfolder_count == Token.INPUT:
             self.tokens.append("INPUT")
 
