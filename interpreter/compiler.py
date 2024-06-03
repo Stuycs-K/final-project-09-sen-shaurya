@@ -6,15 +6,19 @@ class Compiler:
 
     def __init__(self, tokens):
         self.tokens = tokens
-        self.code = ""
+
+    def _compile_print(self, expression):
+        return f"print('hi')\n"
 
     def compile(self):
+        code = ""
         # go through the commands
         for token in self.tokens:
             command = token.type
             expression = token.value
 
-            print("command: ")
-            print(command)
-            print("expression: " )
-            print(expression)
+            if (command == "PRINT"):
+                code += self._compile_print(expression)
+        return code
+
+    
