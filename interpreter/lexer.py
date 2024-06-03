@@ -18,12 +18,12 @@ class Token:
 
     TYPES = ["INT", "FLOAT", "STRING", "CHAR"]
 
-    def __init__(self, token, value):
-        self.token = token
+    def __init__(self, type, value):
+        self.type = type
         self.value = value
 
     def __repr__(self):
-        return f"<{self.token} : {self.value}>"
+        return f"<{self.type} : {self.value}>"
 
 class Lexer:
     """
@@ -36,7 +36,7 @@ class Lexer:
         self.tokens = []
 
     def lex(self):
-        self.lex_commands(self.root_folder)
+        self._lex_commands(self.root_folder)
         return self.tokens
 
     def _lex_commands(self, path):
