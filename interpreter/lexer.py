@@ -1,5 +1,4 @@
 
-import re
 import os
 
 
@@ -85,7 +84,7 @@ class Lexer:
         elif subfolder_count == Token.LET:
             self.tokens.append ("LET")
         elif subfolder_count == Token.PRINT:
-            self.tokens.append(Token(Token.COMMAND_TOKENS[Token.PRINT], self._tokenize_expression(sub_dirs[1])))
+            self.tokens.append(Token("PRINT", self._tokenize_expression(sub_dirs[1])))
         elif subfolder_count == Token.INPUT:
             self.tokens.append("INPUT")
 

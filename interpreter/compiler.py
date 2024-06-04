@@ -8,17 +8,14 @@ class Compiler:
         self.tokens = tokens
 
     def _compile_print(self, expression):
-        return f"print('hi')\n"
+        return f"print('{expression.value[1]}')\n"
 
     def compile(self):
         code = ""
-        # go through the commands
         for token in self.tokens:
             command = token.type
             expression = token.value
-
             if (command == "PRINT"):
                 code += self._compile_print(expression)
         return code
 
-    

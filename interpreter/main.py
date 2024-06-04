@@ -7,6 +7,7 @@ if __name__ == "__main__":
 
     lexer = Lexer(program_path)
     tokens = lexer.lex()
+    # print(tokens)
 
     Compiler = Compiler(tokens)
     code = Compiler.compile()
