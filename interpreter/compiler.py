@@ -11,17 +11,20 @@ class Compiler:
     def __init__(self, tokens):
         self.tokens = tokens
 
-    def _compile_print(self, expression):
+    def _compile_expression(self, expression):
         if (expression.type == "LITERAL"):
             if (expression.value[0] == "STRING"):
-                return f"print('{expression.value[1]}')\n"
+                return f"'{expression.value[1]}'"
         elif (expression.type == "VARIABLE"):
-            return f"print({expression.value})\n"
+            return f"{expression.value}"
         elif (expression.type == "ADD"):
-            return f"print({expression.value[0].value} + {expression.value[1].value})\n"
+            return f"{expression.value[0].value} + {expression.value[1].value}"
+
+    def _compile_print(self, expression):
+        return f"print({self._compile_expression(expression)})\n"
     
-    def _compile_input(self, expression):
-        return f"{expression} = input()\n"
+    def _compile_input(self, variable):
+        return f"{variable} = input()\n"
 
     def compile(self):
         code = ""
