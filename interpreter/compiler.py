@@ -4,10 +4,6 @@ class Compiler:
     compiles tokens into code
     """
 
-    # COMPILED INPUT CODE #
-    # var0 = input()
-    # print(var0)
-
     def __init__(self, tokens):
         self.tokens = tokens
 
@@ -15,16 +11,20 @@ class Compiler:
         if (expression.type == "LITERAL"):
             if (expression.value[0] == "STRING"):
                 return f"'{expression.value[1]}'"
+            if (expression.value[0] == "FLOAT"):
+                return f"{expression.value[1]}"
         elif (expression.type == "VARIABLE"):
             return f"{expression.value}"
         elif (expression.type == "ADD"):
-            return f"{expression.value[0].value} + {expression.value[1].value}"
+            left = self._compile_expression(expression.value[0])
+            right = self._compile_expression(expression.value[1])
+            return f"{left} + {right}"
 
     def _compile_print(self, expression):
         return f"print({self._compile_expression(expression)})\n"
     
     def _compile_input(self, variable):
-        return f"{variable} = input()\n"
+        return f"{variable} = input()\n{variable} = int({variable}) if {variable}.isnumeric() else {variable}\n"
 
     def compile(self):
         code = ""
