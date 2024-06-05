@@ -28,3 +28,9 @@ Write lexer class with lex, lex_commands, tokenize_print, get_sub_dirs, tokenize
 
 ### 6-3
 Add Compiler class and removed parser and interpreter classes. After a lot of thinking and trying different thnigs I have figured out the final structure of my interpreter. I will simply have a Lexer class and a Compiler class. The lexer which I already have an MVP for creates tokens from the code, and the compiler will take that and compile it into real executable code that will then be run. Today I have created a very small scale MVP for the compiler working to parse the print command.
+
+### 6-4
+Added lexing and compiling and evaluating for input command. I also created a new Folders program to help test which just takes inputs and prints them. I also made it so that it casts correctly between different data types
+
+### 6-5
+I completed addition which allowed me to run a new sample program which takes in two inputs and then prints the sum. At first it only worked between strings but I got it working for numbers too. I then expanded on this to include all binary operations!
