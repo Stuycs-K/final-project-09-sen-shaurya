@@ -66,7 +66,7 @@ class Lexer:
             return Token("VARIABLE", self._tokenize_variable(expression_dirs[1]))
         if (expression_len == Token.LITERAL) :
             data_type = Token.TYPES[len(self._get_sub_dirs(expression_dirs[1]))]
-            #second subfolder is data type and third is value
+            # second subfolder is data type and third is value
             if (data_type == "STRING"):
                 value_folders = self._get_sub_dirs(expression_dirs[2].path)
                 value = value_folders[0].name
@@ -94,24 +94,3 @@ class Lexer:
             self.tokens.append(Token("PRINT", self._tokenize_expression(sub_dirs[1])))
         elif subfolder_count == Token.INPUT:
             self.tokens.append(Token("INPUT" , self._tokenize_variable(sub_dirs[1]) ))
-
-    def _add_expression_token(self, subfolder_count):
-        if subfolder_count == Token.VARIABLE:
-            self.tokens.append("VARIABLE")
-        elif subfolder_count == Token.ADD:
-            self.tokens.append("ADD")
-        elif subfolder_count == Token.SUBTRACT:
-            self.tokens.append("SUBTRACT")
-        elif subfolder_count == Token.MULTIPLY:
-            self.tokens.append("MULTIPLY")
-        elif subfolder_count == Token.DIVIDE:
-            self.tokens.append("DIVIDE")
-        elif subfolder_count == Token.LITERAL:
-            self.tokens.append("LITERAL")
-        elif subfolder_count == Token.EQ:
-            self.tokens.append("EQUAL_TO")
-        elif subfolder_count == Token.GT:
-            self.tokens.append("GREATER_THAN")
-        elif subfolder_count == Token.LT:
-            self.tokens.append("LESS_THAN")
-
