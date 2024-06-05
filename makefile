@@ -1,2 +1,2 @@
 run:
-	python3 interpreter/main.py
+	python3 interpreter/main.py $(PATH)
