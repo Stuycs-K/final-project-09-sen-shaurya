@@ -17,6 +17,8 @@ class Compiler:
                 return f"print('{expression.value[1]}')\n"
         elif (expression.type == "VARIABLE"):
             return f"print({expression.value})\n"
+        elif (expression.type == "ADD"):
+            return f"print({expression.value[0].value} + {expression.value[1].value})\n"
     
     def _compile_input(self, expression):
         return f"{expression} = input()\n"
@@ -30,6 +32,5 @@ class Compiler:
                 code += self._compile_input(expression)
             if (command == "PRINT"):
                 code += self._compile_print(expression)
-            
         return code
 
