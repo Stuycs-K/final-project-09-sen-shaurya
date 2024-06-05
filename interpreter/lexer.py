@@ -54,17 +54,17 @@ class Lexer:
         )
         
     def _tokenize_expression(self, path): 
-        """
-        tokenizes expression folder
-        """
+
 
         expression_dirs = self._get_sub_dirs(path)
         # first subfolder is token
         expression_len = len(self._get_sub_dirs(expression_dirs[0]))
-
+        
+        if (expression_len == Token.VARIABLE) :
+            return Token("VARIABLE", self._tokenize_variable(expression_dirs[1]))
         if (expression_len == Token.LITERAL) :
-            #second subfolder is data type and third is value
             data_type = Token.TYPES[len(self._get_sub_dirs(expression_dirs[1]))]
+            #second subfolder is data type and third is value
             if (data_type == "STRING"):
                 value_folders = self._get_sub_dirs(expression_dirs[2].path)
                 value = value_folders[0].name
@@ -72,7 +72,12 @@ class Lexer:
                 # tokenize
                 value = "BOOM"
                 pass
-        return Token(Token.EXPRESSION_TOKENS[Token.LITERAL], [data_type, value])
+            return Token(Token.EXPRESSION_TOKENS[Token.LITERAL], [data_type, value])
+
+    def _tokenize_variable(self, path) :
+        expression_dirs = self._get_sub_dirs(path)
+        
+        return f"var{expression_dirs[0].name}"
 
     def _add_command_token(self, subfolder_count, sub_dirs):
         if subfolder_count == Token.IF:
@@ -86,7 +91,7 @@ class Lexer:
         elif subfolder_count == Token.PRINT:
             self.tokens.append(Token("PRINT", self._tokenize_expression(sub_dirs[1])))
         elif subfolder_count == Token.INPUT:
-            self.tokens.append("INPUT")
+            self.tokens.append(Token("INPUT" , self._tokenize_variable(sub_dirs[1]) ))
 
     def _add_expression_token(self, subfolder_count):
         if subfolder_count == Token.VARIABLE:
