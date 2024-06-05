@@ -54,12 +54,14 @@ class Lexer:
         )
         
     def _tokenize_expression(self, path): 
-
-
         expression_dirs = self._get_sub_dirs(path)
         # first subfolder is token
         expression_len = len(self._get_sub_dirs(expression_dirs[0]))
-        
+        if (expression_len == Token.ADD) :
+            return Token("ADD", [
+                self._tokenize_expression(expression_dirs[1]),
+                self._tokenize_expression(expression_dirs[2])
+            ])
         if (expression_len == Token.VARIABLE) :
             return Token("VARIABLE", self._tokenize_variable(expression_dirs[1]))
         if (expression_len == Token.LITERAL) :
