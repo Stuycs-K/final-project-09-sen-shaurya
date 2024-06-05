@@ -25,3 +25,6 @@ Re-figure out the folder structure and rename folder files to help me understand
 ### 5-31
 Add a token class
 Write lexer class with lex, lex_commands, tokenize_print, get_sub_dirs, tokenize_expressions and all the other ones. Got MVP for print program lexing.
+
+### 6-3
+Add Compiler class and removed parser and interpreter classes. After a lot of thinking and trying different thnigs I have figured out the final structure of my interpreter. I will simply have a Lexer class and a Compiler class. The lexer which I already have an MVP for creates tokens from the code, and the compiler will take that and compile it into real executable code that will then be run. Today I have created a very small scale MVP for the compiler working to parse the print command.
