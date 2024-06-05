@@ -8,6 +8,14 @@ class Compiler:
         self.tokens = tokens
 
     def _compile_expression(self, expression):
+        binary_ops = [ "ADD", "SUBTRACT", "MULTIPLY", "DIVIDE", "EQ", "GT", "LT"]
+        binary_ops_symbols = ['+','-','*','/','==','>','<']
+        binary_index = -1
+        try:
+            binary_index = binary_ops.index(expression.type)
+        except Exception as e:
+            pass
+
         if (expression.type == "LITERAL"):
             if (expression.value[0] == "STRING"):
                 return f"'{expression.value[1]}'"
@@ -15,10 +23,10 @@ class Compiler:
                 return f"{expression.value[1]}"
         elif (expression.type == "VARIABLE"):
             return f"{expression.value}"
-        elif (expression.type == "ADD"):
+        elif (binary_index != -1):
             left = self._compile_expression(expression.value[0])
             right = self._compile_expression(expression.value[1])
-            return f"{left} + {right}"
+            return f"{left} {binary_ops_symbols[binary_index]} {right}"
 
     def _compile_print(self, expression):
         return f"print({self._compile_expression(expression)})\n"
