@@ -51,4 +51,6 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
-programs/
+interpreter/__pycache__/*
+programs/*
+!programs/*.zip
