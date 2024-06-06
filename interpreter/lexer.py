@@ -78,8 +78,10 @@ class Lexer:
 
     def _tokenize_variable(self, path) :
         expression_dirs = self._get_sub_dirs(path)
-        
-        return f"var{expression_dirs[0].name}"
+        if (len(expression_dirs) == 0):
+            return f"var0"
+        else:
+            return f"var{expression_dirs[0].name}"
 
     def _add_command_token(self, subfolder_count, sub_dirs):
         if subfolder_count == Token.IF:
