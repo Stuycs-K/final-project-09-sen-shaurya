@@ -43,4 +43,4 @@ Folders is a language where the program is encoded into a directory structure.
 To run the code, simply create a Folders program in the programs/ directory and then run \
 `make ARG=programName`
 
-## [Presentation Link]([https://drive.google.com/uc?id=1Ft0jbtTGclxKFO3EV5RHIedzffJVbZpD&export=download](https://drive.google.com/file/d/1gRKyWrUkff8WKa3eDHCvS7eR-jQUBSw2/view?usp=sharing)
+## [Presentation Link](https://drive.google.com/uc?id=1Ft0jbtTGclxKFO3EV5RHIedzffJVbZpD&export=download](https://drive.google.com/file/d/1gRKyWrUkff8WKa3eDHCvS7eR-jQUBSw2/view?usp=sharing)
