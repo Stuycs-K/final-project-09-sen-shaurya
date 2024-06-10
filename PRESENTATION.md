@@ -43,7 +43,18 @@ Here are the rules of the Folders language:
 ### 3. Write and test input/adding Program ( in video only )
 ### 4. How is the interpreter organized?
 There are two main parts, the `Lexer` and the `compiler`. The lexer takes in a Path to the root of the folders program. It will then walk through all of the subdirectories in the program and create a tokens list. This Tokens list is passed off to the Compiler which uses this list of tokens to create working python code that can be executed.
-### 5. Relation to Cybersecurity
+Tokens are basic elements that are common to programming languages such as keywords operators and expressions.
+A Token list for the adding two numbers program looks like the following:
+`[<INPUT : var0>, <INPUT : var0>, ... ]`
+The compiled code will look like the following
+```
+var0 = input()
+var0 = int(var0) if var0.isnumeric() else var0
+...
+```
+You can see that the first token in the list of tokens directly matches with the first two lines of code in the compiled code. This is because the compiler goes through the tokens list and directly replaces tokens with their python code equivalents.
 
+
+### 5. Relation to Cybersecurity
 The cool thing about a lot of these esoteric programming languages is that they act like encoding computer instructions. With the Folders language you can hide executable code within your file structure!
-ALso something interesting is thast on windows, folders don't count towards storage used (although technically they do take up space) so you can actually hide code in downloadables you send to people and chances are they wouldn’t even notice. You might see how this technique could be used to embed malware among other seemingly harmless files, in popular github repos for example.
+Also something interesting is that on windows, folders don't count towards storage used (although technically they do take up space) so you can actually hide code in downloadables you send to people and chances are they wouldn’t even notice. You might see how this technique could be used to embed malware among other seemingly harmless files, in popular github repos for example.
