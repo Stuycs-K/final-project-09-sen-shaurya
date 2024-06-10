@@ -34,3 +34,10 @@ Added lexing and compiling and evaluating for input command. I also created a ne
 
 ### 6-5
 I completed addition which allowed me to run a new sample program which takes in two inputs and then prints the sum. At first it only worked between strings but I got it working for numbers too. I then expanded on this to include all binary operations!
+
+## References
+Documentation: 
+https://esolangs.org/wiki/Folders
+https://danieltemkin.com/Esolangs/Folders
+Creator of Folders: Daniel Temkin
+
