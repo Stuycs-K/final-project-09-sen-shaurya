@@ -42,4 +42,5 @@ Here are the rules of the Folders language:
 ### 2. Write and test Hello World Program ( in video only )
 ### 3. Write and test input/adding Program ( in video only )
 ### 4. How is the interpreter organized?
+There are two main parts, the `Lexer` and the `compiler`. The lexer takes in a Path to the root of the folders program. It will then walk through all of the subdirectories in the program and create a tokens list. This Tokens list is passed off to the Compiler which uses this list of tokens to create working python code that can be executed.
 
