@@ -8,7 +8,7 @@ Folders is a language where the program is encoded into a directory structure.
 
 ## Supported
 
-### Commands
+### Folders Commands
 | Command | # of Folders |                                  Details                                  |
 |:-------:|:------------:|:-------------------------------------------------------------------------:|
 | if      | 0 folders    | Second sub-folder holds expression, third holds list of commands          |
@@ -18,7 +18,7 @@ Folders is a language where the program is encoded into a directory structure.
 | print   | 4 folders    | Second sub-folder holds expression                                        |
 | input   | 5 folders    | Second sub-folder holds var name                                          |
 
-### Expressions
+### Folders Expressions
 |      Type     | # of folders |                                                               Details                                                               |
 |:-------------:|:------------:|:-----------------------------------------------------------------------------------------------------------------------------------:|
 | Variable      | 0 folders    | Second sub-folder holds var name                                                                                                    |
@@ -31,10 +31,16 @@ Folders is a language where the program is encoded into a directory structure.
 | Greater Than  | 7 folders    | Second and third folders hold expressions to compare (returns true if the second folder holds a larger value than the third folder) |
 | Less Than     | 8 folders    | Second and third folders hold expressions to compare                                                                                |
 
-### Types
+### Folders Data Types
 |  Type  | # of Folders |                                       Details                                       |
 |:------:|:------------:|:-----------------------------------------------------------------------------------:|
 | int    | 0 folders    | Second sub-folder holds var name                                                    |
 | float  | 1 folder     | Second sub-folder holds first expression to add, third holds second expression      |
 | string | 2 folders    | Second sub-folder holds first expression to subtract, third holds second expression |
 | char   | 3 folders    | Second sub-folder holds first expression to multiply, third holds second expression |
+
+### Instructions
+To run the code, simply create a Folders program in the programs/ directory and then run \
+`make ARG=programName`
+
+## [Presentation Link]()
