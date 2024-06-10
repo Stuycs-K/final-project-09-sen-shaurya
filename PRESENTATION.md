@@ -39,5 +39,7 @@ Here are the rules of the Folders language:
 | string | 2 folders    | Second sub-folder holds first expression to subtract, third holds second expression |
 | char   | 3 folders    | Second sub-folder holds first expression to multiply, third holds second expression |
 
-### 2. Write and test Hello World Program
-### 3. Write and test input/adding Program
+### 2. Write and test Hello World Program ( in video only )
+### 3. Write and test input/adding Program ( in video only )
+### 4. How is the interpreter organized?
+
